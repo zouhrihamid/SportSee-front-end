@@ -2,11 +2,6 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const fetchUserData = async (userId) => {
-      if (!userId) {
-            console.error('userId is undefined or null');
-            return;
-      }
-
       const urls = [`http://localhost:3000/user/${userId}/activity`, `http://localhost:3000/user/${userId}/performance`, `http://localhost:3000/user/${userId}/average-sessions`, `http://localhost:3000/user/${userId}`];
 
       try {

@@ -1,0 +1,32 @@
+.SidePage {
+      display: flex;
+      flex-direction: column;
+      width: 117px;
+      height: auto;
+      background-color: black;
+      gap: 300px;
+}
+.navigationside img {
+      width: 64px;
+      height: 64px;
+      padding: 1em;
+      border-radius: 20px;
+}
+
+.navigationside {
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      flex-direction: column;
+      padding-top: 200px;
+      margin-left: 10px;
+}
+p {
+      display: inline-block;
+      color: white;
+      transform: rotate(-90deg);
+      white-space: nowrap;
+}
+body {
+      font-family: 'Roboto', sans-serif;
+}
