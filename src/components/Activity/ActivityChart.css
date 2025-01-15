@@ -1,0 +1,21 @@
+.container-chart {
+      position: relative;
+      height: 300px;
+      width: 100%;
+      padding-top: 60px;
+      margin-left: 10%;
+      background-color: rgba(251, 251, 251, 1);
+}
+
+.container-chart h3 {
+      position: absolute;
+      font-family: 'Roboto';
+      font-weight: 500;
+      font-size: 15px;
+      top: 10px;
+      left: 100px;
+}
+
+.recharts-legend-item-text {
+      color: rgba(116, 121, 140, 1) !important;
+}

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import './UserData.css';
+import ActivityChart from '../components/Activity/ActivityChart';
 
 const fetchUserData = async (userId) => {
       const urls = [`http://localhost:3000/user/${userId}/activity`, `http://localhost:3000/user/${userId}/performance`, `http://localhost:3000/user/${userId}/average-sessions`, `http://localhost:3000/user/${userId}`];
@@ -27,36 +29,36 @@ const formatUserData = (data) => {
 
 const UserDataComponent = ({ userId }) => {
       const [userData, setUserData] = useState(null);
-      const [status, setStatus] = useState('loading');
 
       useEffect(() => {
-            if (!userId) return setStatus('error');
-
             const fetchData = async () => {
-                  setStatus('loading');
                   try {
                         const data = await fetchUserData(userId);
                         setUserData(data);
-                        setStatus('success');
                   } catch (error) {
                         console.error(error);
-                        setStatus('error');
                   }
             };
 
             fetchData();
       }, [userId]);
 
-      if (status === 'loading') return <div>Loading...</div>;
-      if (status === 'error') return <div>Error: Unable to load user data.</div>;
       if (!userData) return <div>No user data available.</div>;
 
+      console.log('ActivitySession', userData.activity.sessions);
       return (
-            <div>
-                  <h2>
-                        {userData.user.userInfos.firstName} {userData.user.userInfos.lastName}
-                  </h2>
-            </div>
+            <>
+                  <div className="title">
+                        <span className="Name">
+                              Bonjour
+                              <span className="red">{userData.user.userInfos.firstName}</span>
+                        </span>
+                        <span className="subtitle"> Félicitation! Vous avez explosé vos objectifs hier 👏</span>
+                  </div>
+                  <div className="Chart">
+                        <ActivityChart className="ActivityChar" sessions={userData.activity.sessions} />
+                  </div>
+            </>
       );
 };
 
