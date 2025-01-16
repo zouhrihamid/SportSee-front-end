@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 
 import Logo from '../../assets/logo-SportSee.svg';
 import './Header.css';
+
+/**
+ *
+ * @returns
+ */
 function Header() {
       return (
             <div className="header">

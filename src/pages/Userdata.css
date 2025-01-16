@@ -19,3 +19,6 @@
       font-size: 18px;
       font-weight: 400;
 }
+.chartWrapper {
+      display: flex;
+}

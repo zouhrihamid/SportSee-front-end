@@ -1,0 +1,34 @@
+.average-chart-container {
+      width: 258px;
+      height: 263px;
+      background-color: rgba(255, 0, 0, 1);
+      border-radius: 10px;
+      margin: 40px 20px 10px 80px;
+      position: relative;
+}
+
+.title-average {
+      transform: rotate(90deg);
+      position: absolute;
+      left: 50px;
+}
+p {
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Roboto';
+      text-align: center;
+}
+
+.recharts-tooltip-wrapper {
+      background-color: #ffffff !important;
+      border-radius: 5px;
+}
+
+.recharts-tooltip-item {
+      color: #000000 !important;
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+      padding: 0px;
+}
