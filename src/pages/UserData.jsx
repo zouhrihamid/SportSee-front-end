@@ -4,6 +4,8 @@ import './UserData.css';
 import ActivityChart from '../components/Activity/ActivityChart';
 import AverageChart from '../components/AverageSessions/AverageChart';
 import PerformanceChart from '../components/Performance/Performance';
+import SimpleRadialBarChart from '../components/Score/Score';
+
 /**
  * Description placeholder
  *
@@ -72,6 +74,9 @@ const UserDataComponent = ({ userId }) => {
                         </div>
                         <div className="ChartPerformance">
                               <PerformanceChart className="performance" performanceData={[userData.performance]} />
+                        </div>
+                        <div className="SimpleRadialBarChart">
+                              <SimpleRadialBarChart score={[userData.user.score]} />
                         </div>
                   </div>
             </>
