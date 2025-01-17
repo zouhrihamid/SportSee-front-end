@@ -19,3 +19,7 @@
 .recharts-legend-item-text {
       color: rgba(116, 121, 140, 1) !important;
 }
+
+.recharts-tooltip-item > span {
+      color: rgba(255, 255, 255, 1) !important;
+}

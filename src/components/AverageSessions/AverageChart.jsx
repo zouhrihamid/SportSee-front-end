@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types';
-import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
 import './AverageChart.css';
+
+const CustomCursor = (props) => {
+      const { points } = props;
+      const { x } = points[0];
+
+      return <Rectangle fill="rgba(0, 0, 0, 0.5)" stroke="transparent" x={x + 1} y={0} width={258} height={263} />;
+};
+
+CustomCursor.propTypes = {
+      points: PropTypes.array.isRequired,
+};
 
 const AverageChart = ({ AverageData }) => {
       const daysMap = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -20,12 +31,22 @@ const AverageChart = ({ AverageData }) => {
                               data={filteredData}
                               margin={{
                                     top: 50,
-                                    right: 20,
-                                    left: 20,
+                                    right: 0,
+                                    left: 0,
                                     bottom: 20,
                               }}
                         >
-                              <XAxis dataKey="day" tick={{ fill: '#ffffff', fontSize: 12 }} tickLine={false} axisLine={false} interval={0} />
+                              <XAxis
+                                    dataKey="day"
+                                    tick={{ fill: '#ffffff', fontSize: 12 }}
+                                    tickLine={false}
+                                    axisLine={false}
+                                    interval={0}
+                                    style={{
+                                          transform: 'scaleX(0.76)',
+                                          transformOrigin: 'center',
+                                    }}
+                              />
                               <Tooltip
                                     contentStyle={{
                                           backgroundColor: '#ffffff',
@@ -40,7 +61,7 @@ const AverageChart = ({ AverageData }) => {
                                     formatter={(value) => {
                                           return [`${value} min`];
                                     }}
-                                    cursor={{ stroke: '', strokeWidth: 1 }}
+                                    cursor={<CustomCursor />}
                               />
                               <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" dot={false} activeDot={{ r: 8 }} />
                         </LineChart>

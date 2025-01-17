@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import './UserData.css';
+import './Userdata.css';
 import ActivityChart from '../components/Activity/ActivityChart';
 import AverageChart from '../components/AverageSessions/AverageChart';
 import PerformanceChart from '../components/Performance/Performance';
 import SimpleRadialBarChart from '../components/Score/Score';
-
+import caloriesIcon from '../assets/calories-icon.jpg';
+import proteinesIcon from '../assets/protein-icon.jpg';
+import glucidesIcon from '../assets/carbs-icon.jpg';
+import lipideIcon from '../assets/fat-icon.jpg';
 /**
  * Description placeholder
  *
@@ -65,19 +68,53 @@ const UserDataComponent = ({ userId }) => {
                         </span>
                         <span className="subtitle"> Félicitation! Vous avez explosé vos objectifs hier 👏</span>
                   </div>
-                  <div className="Chart">
-                        <ActivityChart className="ActivityChar" sessions={userData.activity.sessions} />
-                  </div>
-                  <div className="chartWrapper">
-                        <div className="ChartAverage">
-                              <AverageChart className="AverageSessions" AverageData={userData.Average.sessions} />
-                        </div>
-                        <div className="ChartPerformance">
-                              <PerformanceChart className="performance" performanceData={[userData.performance]} />
-                        </div>
-                        <div className="SimpleRadialBarChart">
-                              <SimpleRadialBarChart score={[userData.user.score]} />
-                        </div>
+                  <div className="info-nutrition">
+                        <section className="all-char">
+                              <div className="Chart">
+                                    <ActivityChart className="ActivityChar" sessions={userData.activity.sessions} />
+                              </div>
+                              <div className="chartWrapper">
+                                    <div className="ChartAverage">
+                                          <AverageChart className="AverageSessions" AverageData={userData.Average.sessions} />
+                                    </div>
+                                    <div className="ChartPerformance">
+                                          <PerformanceChart className="performance" performanceData={[userData.performance]} />
+                                    </div>
+                                    <div className="SimpleRadialBarChart">
+                                          <SimpleRadialBarChart score={[userData.user.score]} />
+                                    </div>
+                              </div>
+                        </section>
+                        <section className="all-nutritional">
+                              <div className="nutritional">
+                                    <img src={caloriesIcon} alt="Calories Icon" style={{ width: '60px', height: '60px' }} />{' '}
+                                    <div className="nutritional-info">
+                                          <span>{userData.user.keyData.calorieCount / 1000} kCal</span>
+                                          <p>Calories</p>
+                                    </div>
+                              </div>
+                              <div className="nutritional">
+                                    <img src={proteinesIcon} alt="Proteines Icon" style={{ width: '60px', height: '60px' }} />{' '}
+                                    <div className="nutritional-info">
+                                          <span>{userData.user.keyData.proteinCount} g</span>
+                                          <p>Proteines</p>
+                                    </div>
+                              </div>
+                              <div className="nutritional">
+                                    <img src={glucidesIcon} alt="glucide Icon" style={{ width: '60px', height: '60px' }} />{' '}
+                                    <div className="nutritional-info">
+                                          <span>{userData.user.keyData.carbohydrateCount} g</span>
+                                          <p>Glucides</p>
+                                    </div>
+                              </div>
+                              <div className="nutritional">
+                                    <img src={lipideIcon} alt="lipideIcon Icon" style={{ width: '60px', height: '60px' }} />{' '}
+                                    <div className="nutritional-info">
+                                          <span>{userData.user.keyData.lipidCount} g</span>
+                                          <p>Lipides</p>
+                                    </div>
+                              </div>
+                        </section>
                   </div>
             </>
       );

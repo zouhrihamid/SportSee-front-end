@@ -35,8 +35,19 @@ const ActivityChart = ({ sessions }) => {
 
                               <Tooltip
                                     formatter={(value, name) => {
-                                          return name === 'Calories brûlées (kCal)' ? [`${value}kCal`] : [`${value}kg`];
+                                          return name === 'Calories brûlées (kCal)' ? [`${value} kCal`] : [`${value} kg`];
                                     }}
+                                    contentStyle={{
+                                          backgroundColor: 'rgba(230,0,0,1)',
+                                          border: '1px solid #ccc',
+                                          borderRadius: '5px',
+                                          padding: '10px',
+                                          display: 'flex',
+                                          flexDirection: 'column',
+                                          justifyContent: 'center',
+                                          alignItems: 'center',
+                                    }}
+                                    labelFormatter={() => ''}
                               />
 
                               <Legend

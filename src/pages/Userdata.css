@@ -22,3 +22,50 @@
 .chartWrapper {
       display: flex;
 }
+.nutritional {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      width: 258px;
+      height: 124px;
+      background-color: rgba(251, 251, 251, 1);
+      border-radius: 10px;
+      padding-left: 10px;
+      text-align: center;
+      margin-bottom: 62px;
+}
+
+.nutritional img {
+      margin-bottom: 10px;
+}
+
+.nutritional-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+
+.nutritional-info span {
+      font-family: 'Roboto';
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 5px;
+}
+
+.nutritional-info p {
+      font-family: 'Roboto';
+      font-size: 14px;
+      font-weight: 500;
+      font-weight: normal;
+      color: rgba(116, 121, 140, 1);
+      margin-top: 0;
+      rotate: 90deg;
+}
+
+.info-nutrition {
+      display: flex;
+}
+.all-nutritional {
+      margin-left: 20px;
+}

@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
-
+/**
+ *
+ * @param {*} param0
+ * @returns
+ */
 const SimpleRadialBarChart = ({ score }) => {
       // Préparer les données pour le graphique radial
 
