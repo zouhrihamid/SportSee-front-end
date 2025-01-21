@@ -1,117 +1,87 @@
-import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Userdata.css';
 import ActivityChart from '../components/Activity/ActivityChart';
 import AverageChart from '../components/AverageSessions/AverageChart';
-import PerformanceChart from '../components/Performance/Performance';
 import SimpleRadialBarChart from '../components/Score/Score';
+import PerformanceChart from '../components/Performance/Performance';
 import caloriesIcon from '../assets/calories-icon.jpg';
 import proteinesIcon from '../assets/protein-icon.jpg';
 import glucidesIcon from '../assets/carbs-icon.jpg';
 import lipideIcon from '../assets/fat-icon.jpg';
-/**
- * Description placeholder
- *
- * @async
- * @param {*} userId
- * @returns {unknown}
- */
-const fetchUserData = async (userId) => {
-      const urls = [`http://localhost:3000/user/${userId}/activity`, `http://localhost:3000/user/${userId}/performance`, `http://localhost:3000/user/${userId}/average-sessions`, `http://localhost:3000/user/${userId}`];
+import { useDataUser } from '../services/serviceData';
+import { useDataActivity } from '../services/serviceActivity';
+import { useDataAverage } from '../services/serviceAverage';
+import { useDataPerformance } from '../services/servicePerformance';
 
-      try {
-            const responses = await Promise.all(urls.map((url) => fetch(url)));
-            const data = await Promise.all(responses.map((res) => res.json()));
-            return formatUserData(data);
-      } catch (error) {
-            console.error('Error fetching data:', error);
-            throw error;
-      }
-};
-
-const formatUserData = (data) => {
-      const [activityData, performanceData, statisticsData, userData] = data;
-
-      return {
-            activity: activityData.data,
-            performance: performanceData.data,
-            user: userData.data,
-            Average: statisticsData.data,
-      };
-};
-
+useDataPerformance;
 const UserDataComponent = ({ userId }) => {
-      const [userData, setUserData] = useState(null);
+      const ismocked = true;
 
-      useEffect(() => {
-            const fetchData = async () => {
-                  try {
-                        const data = await fetchUserData(userId);
-                        setUserData(data);
-                  } catch (error) {
-                        console.error(error);
-                  }
-            };
+      const { data: userData } = useDataUser(userId, ismocked);
+      const { data: activityData } = useDataActivity(userId, ismocked);
+      const { data: averageData } = useDataAverage(userId, ismocked);
+      const { data: performanceData } = useDataPerformance(userId, ismocked);
 
-            fetchData();
-      }, [userId]);
+      if (!userData || !activityData || !averageData) {
+            return <div>No user data available for the provided ID.</div>;
+      }
 
-      if (!userData) return <div>No user data available.</div>;
-
-      console.log('performance', userData.performance);
       return (
             <>
                   <div className="title">
                         <span className="Name">
-                              Bonjour
-                              <span className="red">{userData.user.userInfos.firstName}</span>
+                              Bonjour <span className="red">{userData.userInfos.firstName}</span>
                         </span>
-                        <span className="subtitle"> Félicitation! Vous avez explosé vos objectifs hier 👏</span>
+                        <span className="subtitle"> Félicitations ! Vous avez explosé vos objectifs hier 👏</span>
                   </div>
+
                   <div className="info-nutrition">
                         <section className="all-char">
                               <div className="Chart">
-                                    <ActivityChart className="ActivityChar" sessions={userData.activity.sessions} />
+                                    <ActivityChart className="ActivityChar" sessions={activityData.sessions} />
                               </div>
                               <div className="chartWrapper">
                                     <div className="ChartAverage">
-                                          <AverageChart className="AverageSessions" AverageData={userData.Average.sessions} />
+                                          <AverageChart className="AverageSessions" AverageData={averageData.sessions} />
                                     </div>
                                     <div className="ChartPerformance">
-                                          <PerformanceChart className="performance" performanceData={[userData.performance]} />
+                                          <PerformanceChart className="performance" performance={performanceData} />
                                     </div>
                                     <div className="SimpleRadialBarChart">
-                                          <SimpleRadialBarChart score={[userData.user.score]} />
+                                          <SimpleRadialBarChart score={userData.todayScore || userData.score} />
                                     </div>
                               </div>
                         </section>
                         <section className="all-nutritional">
                               <div className="nutritional">
-                                    <img src={caloriesIcon} alt="Calories Icon" style={{ width: '60px', height: '60px' }} />{' '}
+                                    <img src={caloriesIcon} alt="Calories Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
-                                          <span>{userData.user.keyData.calorieCount / 1000} kCal</span>
+                                          <span>{userData.keyData.calorieCount / 1000} kCal</span>
                                           <p>Calories</p>
                                     </div>
                               </div>
+
                               <div className="nutritional">
-                                    <img src={proteinesIcon} alt="Proteines Icon" style={{ width: '60px', height: '60px' }} />{' '}
+                                    <img src={proteinesIcon} alt="Proteins Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
-                                          <span>{userData.user.keyData.proteinCount} g</span>
-                                          <p>Proteines</p>
+                                          <span>{userData.keyData.proteinCount} g</span>
+                                          <p>Proteins</p>
                                     </div>
                               </div>
+
                               <div className="nutritional">
-                                    <img src={glucidesIcon} alt="glucide Icon" style={{ width: '60px', height: '60px' }} />{' '}
+                                    <img src={glucidesIcon} alt="Carbs Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
-                                          <span>{userData.user.keyData.carbohydrateCount} g</span>
-                                          <p>Glucides</p>
+                                          <span>{userData.keyData.carbohydrateCount} g</span>
+                                          <p>Carbs</p>
                                     </div>
                               </div>
+
                               <div className="nutritional">
-                                    <img src={lipideIcon} alt="lipideIcon Icon" style={{ width: '60px', height: '60px' }} />{' '}
+                                    <img src={lipideIcon} alt="Fats Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
-                                          <span>{userData.user.keyData.lipidCount} g</span>
-                                          <p>Lipides</p>
+                                          <span>{userData.keyData.lipidCount} g</span>
+                                          <p>Fats</p>
                                     </div>
                               </div>
                         </section>
@@ -120,7 +90,6 @@ const UserDataComponent = ({ userId }) => {
       );
 };
 
-// Validation des props avec PropTypes
 UserDataComponent.propTypes = {
       userId: PropTypes.number.isRequired,
 };
