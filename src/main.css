@@ -1,5 +1,8 @@
+.app-container {
+      display: grid;
+      grid-column: auto;
+}
+
 .main-content {
       display: flex;
-      flex-direction: row;
-      height: 1024px;
 }

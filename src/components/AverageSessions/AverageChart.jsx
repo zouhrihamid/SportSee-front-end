@@ -49,19 +49,22 @@ const AverageChart = ({ AverageData }) => {
                               />
                               <Tooltip
                                     contentStyle={{
-                                          backgroundColor: '#ffffff',
-                                          borderRadius: '5px',
+                                          backgroundColor: 'rgba(255,255,255,1)',
+                                          borderRadius: '1px',
                                           display: 'flex',
                                           flexDirection: 'column',
                                           justifyContent: 'center',
                                           textItem: 'center',
                                           padding: '2px',
+                                          width: '50px',
+                                          height: '25px',
                                     }}
                                     labelFormatter={() => ''}
                                     formatter={(value) => {
                                           return [`${value} min`];
                                     }}
                                     cursor={<CustomCursor />}
+                                    position={{ y: 30 }}
                               />
                               <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" dot={false} activeDot={{ r: 8 }} />
                         </LineChart>

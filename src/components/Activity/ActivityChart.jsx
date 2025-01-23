@@ -12,6 +12,48 @@ const ActivityChart = ({ sessions }) => {
 
       const data = converCaloriesTokcal(sessions);
 
+      const CustomTooltip = ({ active, payload, coordinate }) => {
+            if (active && payload && payload.length) {
+                  const calorieData = payload.find((item) => item.name === 'Calories brûlées (kCal)');
+                  const kilogramData = payload.find((item) => item.name === 'Poids (kg)');
+
+                  return (
+                        <div
+                              style={{
+                                    backgroundColor: 'rgba(230,0,0,1)',
+                                    border: '1px solid #ccc',
+                                    borderRadius: '5px',
+                                    padding: '10px 2px',
+                                    color: 'white',
+                                    fontSize: '14px',
+                                    textAlign: 'center',
+                                    position: 'absolute',
+                                    left: `${coordinate.x + 70}px`,
+                                    top: `${-20}px`,
+                              }}
+                        >
+                              {calorieData && <div style={{ marginBottom: '20px' }}>{`${calorieData.value}kCal`}</div>}
+                              {kilogramData && <div style={{ marginTop: '20px' }}>{`${kilogramData.value}kg`}</div>}
+                        </div>
+                  );
+            }
+            return null;
+      };
+
+      CustomTooltip.propTypes = {
+            active: PropTypes.bool,
+            payload: PropTypes.arrayOf(
+                  PropTypes.shape({
+                        name: PropTypes.string,
+                        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+                  })
+            ),
+            coordinate: PropTypes.shape({
+                  x: PropTypes.number,
+                  y: PropTypes.number,
+            }),
+      };
+
       return (
             <div className="container-chart">
                   <h3>Activité quotidienne</h3>
@@ -20,35 +62,19 @@ const ActivityChart = ({ sessions }) => {
                               data={data}
                               margin={{
                                     top: 20,
-                                    right: 0,
-                                    left: 0,
+                                    right: 30,
+                                    left: 30,
                                     bottom: 5,
                               }}
                               barSize={7}
+                              barGap={10}
+                              radius={[50, 50, 50, 50]}
                         >
-                              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                              <XAxis dataKey="day" tickFormatter={(day) => day.slice(-1)} axisLine={false} tickLine={false} />
-
-                              <YAxis yAxisId="left" orientation="left" axisLine={false} tickLine={false} hide={true} />
-
-                              <YAxis yAxisId="right" orientation="right" axisLine={false} tickLine={false} domain={['dataMin - 5', 'dataMax + 5']} />
-
-                              <Tooltip
-                                    formatter={(value, name) => {
-                                          return name === 'Calories brûlées (kCal)' ? [`${value} kCal`] : [`${value} kg`];
-                                    }}
-                                    contentStyle={{
-                                          backgroundColor: 'rgba(230,0,0,1)',
-                                          border: '1px solid #ccc',
-                                          borderRadius: '5px',
-                                          padding: '10px',
-                                          display: 'flex',
-                                          flexDirection: 'column',
-                                          justifyContent: 'center',
-                                          alignItems: 'center',
-                                    }}
-                                    labelFormatter={() => ''}
-                              />
+                              <CartesianGrid strokeDasharray="3,3" vertical={false} horizontal={true} />
+                              <XAxis dataKey="day" tickFormatter={(day) => day.slice(-1)} axisLine={false} tickLine={false} padding={{ left: -40, right: -40 }} />
+                              <YAxis yAxisId="left" orientation="left" axisLine={false} tickLine={false} hide={true} tickCount={3} domain={[0, 0.7]} />
+                              <YAxis yAxisId="right" orientation="right" axisLine={false} tickLine={false} domain={[50, 90]} tickMargin={10} dx={30} tickCount={3} />
+                              <Tooltip content={<CustomTooltip />} labelFormatter={() => ''} />
 
                               <Legend
                                     wrapperStyle={{
@@ -61,10 +87,8 @@ const ActivityChart = ({ sessions }) => {
                                     iconType="circle"
                                     iconSize={8}
                               />
-
-                              <Bar dataKey="kilogram" fill="rgba(40, 45, 48, 1)" name="Poids (kg)" yAxisId="right" />
-
-                              <Bar dataKey="calories" fill="rgba(230, 0, 0, 1)" name="Calories brûlées (kCal)" yAxisId="left" />
+                              <Bar dataKey="kilogram" fill="rgba(40, 45, 48, 1)" name="Poids (kg)" yAxisId="right" radius={[3, 3, 0, 0]} />
+                              <Bar dataKey="calories" fill="rgba(230, 0, 0, 1)" name="Calories brûlées (kCal)" yAxisId="left" radius={[3, 3, 0, 0]} />
                         </BarChart>
                   </ResponsiveContainer>
             </div>

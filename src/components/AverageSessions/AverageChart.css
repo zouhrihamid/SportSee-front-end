@@ -10,9 +10,10 @@
 .title-average {
       transform: rotate(90deg);
       position: absolute;
-      left: 35px;
+      left: -35px;
+      top: -40px;
 }
-p {
+.title-average p {
       color: rgba(255, 255, 255, 0.5);
       font-size: 15px;
       font-weight: 500;
@@ -23,10 +24,14 @@ p {
 .recharts-tooltip-wrapper {
       background-color: #ffffff !important;
       border-radius: 5px;
+      position: relative;
 }
 
 .recharts-tooltip-item > span {
+      position: absolute;
       color: #000000 !important;
+      top: 8px;
+      left: 7px;
       font-size: 14px;
       text-align: center;
       margin: 0;

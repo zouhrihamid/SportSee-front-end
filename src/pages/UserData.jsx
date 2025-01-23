@@ -73,7 +73,7 @@ const UserDataComponent = ({ userId }) => {
                                     <img src={glucidesIcon} alt="Carbs Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
                                           <span>{userData.keyData.carbohydrateCount} g</span>
-                                          <p>Carbs</p>
+                                          <p>Clucides</p>
                                     </div>
                               </div>
 

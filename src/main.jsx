@@ -11,13 +11,15 @@ import './main.css';
 createRoot(document.getElementById('root')).render(
       <StrictMode>
             <Router>
-                  <Header />
-                  <div className="main-content">
-                        <SidePage />
-                        <div className="page-content">
-                              <Routes>
-                                    <Route path="/user/:userId" element={<UserDataPage />} />
-                              </Routes>
+                  <div className="app-container">
+                        <Header />
+                        <div className="main-content">
+                              <SidePage />
+                              <div className="page-content">
+                                    <Routes>
+                                          <Route path="/user/:userId" element={<UserDataPage />} />
+                                    </Routes>
+                              </div>
                         </div>
                   </div>
             </Router>

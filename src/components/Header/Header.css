@@ -1,9 +1,10 @@
 .header {
       display: flex;
       flex-direction: row;
-      width: 100%;
+      min-width: 1024px;
       height: 91px;
-      background-color: black;
+      background-color: rgba(2, 2, 3, 1);
+      font-family: 'Roboto', sans-serif;
 }
 img {
       width: 178px;
@@ -23,7 +24,4 @@ img {
       font-weight: 500;
       font-size: 20px;
       text-decoration: none;
-}
-body {
-      font-family: 'Roboto', sans-serif;
 }
