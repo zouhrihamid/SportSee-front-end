@@ -1,7 +1,7 @@
 .container-chart {
       position: relative;
-      height: 320px;
-      width: 835px;
+      height: auto;
+      width: 90%;
       padding-top: 60px;
       margin-left: 10%;
       background-color: rgba(251, 251, 251, 1);
@@ -11,13 +11,15 @@
       position: absolute;
       font-family: 'Roboto';
       font-weight: 500;
-      font-size: 15px;
-      top: 10px;
-      left: 100px;
+      font-size: clamp(15px);
+      top: 1%;
+      left: 10%;
 }
-
 .recharts-tooltip-cursor {
       fill: rgba(196, 196, 196, 0.5) !important;
       stroke-width: 100 !important;
       width: 100px !important;
+}
+.recharts-legend-item-text {
+      color: rgba(116, 121, 140, 1) !important;
 }

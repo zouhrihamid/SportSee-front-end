@@ -1,8 +1,43 @@
 .app-container {
-      display: grid;
-      grid-column: auto;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+      margin: 0px;
 }
 
 .main-content {
       display: flex;
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: hidden;
+      width: 100%;
+}
+
+.page-content {
+      flex: 1;
+      overflow-x: hidden;
+      padding: 0px;
+}
+
+@media (max-width: 786) {
+      .app-container {
+            flex-direction: column;
+            min-width: auto;
+            height: auto;
+      }
+
+      .main-content {
+            flex-direction: row;
+      }
+
+      .side-page {
+            flex: 0 0 auto;
+            border-right: none;
+            border-bottom: 1px solid #ddd;
+      }
+
+      .page-content {
+            padding: 10px;
+      }
 }

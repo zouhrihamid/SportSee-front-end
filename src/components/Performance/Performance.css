@@ -1,4 +1,5 @@
 .performance-chart-container {
-      display: flex;
-      margin: 40px 0px 10px 25px;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 258px;
 }

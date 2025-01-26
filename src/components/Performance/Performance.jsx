@@ -29,7 +29,7 @@ const PerformanceChart = ({ performance }) => {
       const reverseData = transformedData.reverse();
       return (
             <div className="performance-chart-container">
-                  <ResponsiveContainer width={258} height={263}>
+                  <ResponsiveContainer width="100%" height="100%">
                         <RadarChart
                               data={reverseData}
                               margin={{

@@ -8,55 +8,50 @@ import caloriesIcon from '../assets/calories-icon.jpg';
 import proteinesIcon from '../assets/protein-icon.jpg';
 import glucidesIcon from '../assets/carbs-icon.jpg';
 import lipideIcon from '../assets/fat-icon.jpg';
-import { useDataUser } from '../services/serviceData';
-import { useDataActivity } from '../services/serviceActivity';
-import { useDataAverage } from '../services/serviceAverage';
-import { useDataPerformance } from '../services/servicePerformance';
+import { useGetAllData } from '../services/service';
 
-useDataPerformance;
 const UserDataComponent = ({ userId }) => {
-      const ismocked = true;
+      const isMocked = true;
+      const { data } = useGetAllData(userId, isMocked);
 
-      const { data: userData } = useDataUser(userId, ismocked);
-      const { data: activityData } = useDataActivity(userId, ismocked);
-      const { data: averageData } = useDataAverage(userId, ismocked);
-      const { data: performanceData } = useDataPerformance(userId, ismocked);
-
-      if (!userData || !activityData || !averageData) {
+      if (!data) {
             return <div>No user data available for the provided ID.</div>;
       }
 
+      const { user, activity, average, performance } = data;
+
       return (
-            <>
+            <div className="dashboard-container">
                   <div className="title">
                         <span className="Name">
-                              Bonjour <span className="red">{userData.userInfos.firstName}</span>
+                              Bonjour <span className="red">{user.userInfos.firstName}</span>
                         </span>
                         <span className="subtitle"> Félicitations ! Vous avez explosé vos objectifs hier 👏</span>
                   </div>
 
-                  <div className="info-nutrition">
+                  <div className="chart-and-nutrition">
                         <section className="all-char">
-                              <div className="Chart">
-                                    <ActivityChart className="ActivityChar" sessions={activityData.sessions} />
+                              <div className="Chart-activity">
+                                    <ActivityChart sessions={activity.sessions} />
                               </div>
                               <div className="chartWrapper">
-                                    <div className="ChartAverage">
-                                          <AverageChart className="AverageSessions" AverageData={averageData.sessions} />
+                                    <div className="chart">
+                                          <AverageChart AverageData={average.sessions} />
                                     </div>
-                                    <div className="ChartPerformance">
-                                          <PerformanceChart className="performance" performance={performanceData} />
+                                    <div className="chart">
+                                          <PerformanceChart performance={performance} />
                                     </div>
-                                    <div className="SimpleRadialBarChart">
-                                          <SimpleRadialBarChart score={userData.todayScore || userData.score} />
+                                    <div className="chart">
+                                          <SimpleRadialBarChart score={user.todayScore || user.score} />
                                     </div>
                               </div>
                         </section>
+
                         <section className="all-nutritional">
                               <div className="nutritional">
                                     <img src={caloriesIcon} alt="Calories Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
-                                          <span>{userData.keyData.calorieCount / 1000} kCal</span>
+                                          <span>{user.keyData.calorieCount / 1000} kCal</span>
                                           <p>Calories</p>
                                     </div>
                               </div>
@@ -64,7 +59,7 @@ const UserDataComponent = ({ userId }) => {
                               <div className="nutritional">
                                     <img src={proteinesIcon} alt="Proteins Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
-                                          <span>{userData.keyData.proteinCount} g</span>
+                                          <span>{user.keyData.proteinCount} g</span>
                                           <p>Proteins</p>
                                     </div>
                               </div>
@@ -72,7 +67,7 @@ const UserDataComponent = ({ userId }) => {
                               <div className="nutritional">
                                     <img src={glucidesIcon} alt="Carbs Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
-                                          <span>{userData.keyData.carbohydrateCount} g</span>
+                                          <span>{user.keyData.carbohydrateCount} g</span>
                                           <p>Clucides</p>
                                     </div>
                               </div>
@@ -80,13 +75,13 @@ const UserDataComponent = ({ userId }) => {
                               <div className="nutritional">
                                     <img src={lipideIcon} alt="Fats Icon" className="nutritional-icon" />
                                     <div className="nutritional-info">
-                                          <span>{userData.keyData.lipidCount} g</span>
+                                          <span>{user.keyData.lipidCount} g</span>
                                           <p>Fats</p>
                                     </div>
                               </div>
                         </section>
                   </div>
-            </>
+            </div>
       );
 };
 

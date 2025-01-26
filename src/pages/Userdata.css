@@ -1,3 +1,9 @@
+.dashboard-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+}
+
 .title {
       display: flex;
       flex-direction: column;
@@ -6,7 +12,6 @@
 }
 .Name {
       display: flex;
-
       font-weight: 500;
       font-size: 48px;
       gap: 10px;
@@ -19,29 +24,25 @@
       font-size: 18px;
       font-weight: 400;
 }
-.chartWrapper {
-      display: flex;
-}
+
 .nutritional {
       display: flex;
       flex-direction: row;
       align-items: center;
-      width: 258px;
-      height: 124px;
+      width: 80%;
       background-color: rgba(251, 251, 251, 1);
       border-radius: 10px;
-      padding: 5px 0px 0px 10px;
-
+      padding: 10% 0% 7% 10%;
       text-align: center;
-      margin-bottom: 56px;
-      margin-left: 0px;
+      margin-right: 60%;
+      margin-bottom: 20%;
       position: relative;
 }
 
 .nutritional img {
       margin-bottom: 10px;
-      width: 60px;
-      height: 60px;
+      width: 28%;
+      height: 28%;
 }
 
 .nutritional-info {
@@ -70,9 +71,33 @@
       rotate: 90deg;
 }
 
-.info-nutrition {
-      display: flex;
+.chart-and-nutrition {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
 }
 .all-nutritional {
-      margin-left: 20px;
+      margin-left: 2%;
+}
+.all-char {
+      grid-column: span 3;
+}
+.all-nutritional {
+      grid-column: span 1;
+}
+.chartWrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 5% 0% 0% 10%;
+      justify-items: center;
+      align-content: center;
+}
+.chart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      box-sizing: border-box;
+      width: 100%;
 }

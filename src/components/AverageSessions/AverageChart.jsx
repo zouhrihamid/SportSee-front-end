@@ -26,7 +26,7 @@ const AverageChart = ({ AverageData }) => {
                   <div className="title-average">
                         <p>Durée moyenne des sessions</p>
                   </div>
-                  <ResponsiveContainer width="100%" height={263}>
+                  <ResponsiveContainer>
                         <LineChart
                               data={filteredData}
                               margin={{
@@ -55,8 +55,9 @@ const AverageChart = ({ AverageData }) => {
                                           flexDirection: 'column',
                                           justifyContent: 'center',
                                           textItem: 'center',
-                                          padding: '2px',
-                                          width: '50px',
+                                          fontSize: '8px',
+                                          padding: '2px 8px',
+                                          width: '39px',
                                           height: '25px',
                                     }}
                                     labelFormatter={() => ''}

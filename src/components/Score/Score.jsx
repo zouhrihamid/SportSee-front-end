@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
+import './score.css';
 /**
  *
  * @param {*} param0
@@ -12,39 +13,20 @@ const SimpleRadialBarChart = ({ score }) => {
       ];
 
       return (
-            <div style={{ position: 'relative', width: '258px', height: '263px', margin: '40px 0px 40px 30px', backgroundColor: 'rgba(251, 251, 251, 1)', borderRadius: '10px' }}>
+            <div className="score-chart-container">
+                  <div className="chart-overlay">
+                        <div className="chart-title">Score</div>
+                        <div className="chart-score">
+                              <span className="chart-percentage">{Math.round(score * 100)}%</span>
+                              <span className="chart-subtitle">de votre objectif</span>
+                        </div>
+                  </div>
+
                   <ResponsiveContainer width="100%" height="100%">
-                        <RadialBarChart innerRadius="70%" outerRadius="90%" data={chartData} startAngle={90} endAngle={450}>
+                        <RadialBarChart innerRadius="70%" outerRadius="90%" data={chartData} startAngle={80} endAngle={450}>
                               <RadialBar minAngle={15} clockWise dataKey="value" background={{ fill: 'transparent' }} cornerRadius={10} />
                         </RadialBarChart>
                   </ResponsiveContainer>
-
-                  <div
-                        style={{
-                              position: 'absolute',
-                              top: '50%',
-                              left: '50%',
-                              transform: 'translate(-50%, -50%)',
-                              textAlign: 'center',
-                              color: '#282D30',
-                        }}
-                  >
-                        <div style={{ fontSize: '20px', fontWeight: 'bold' }}>{Math.round(score * 100)}%</div>
-                        <div style={{ fontSize: '14px', color: '#74798C' }}> de votre objectif</div>
-                  </div>
-                  <div
-                        style={{
-                              position: 'absolute',
-                              top: '10%',
-                              left: '30%',
-                              transform: 'translate(-50%, -50%)',
-                              textAlign: 'center',
-                              color: '#282D30',
-                        }}
-                  >
-                        {' '}
-                        Score
-                  </div>
             </div>
       );
 };

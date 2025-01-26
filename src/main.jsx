@@ -15,6 +15,7 @@ createRoot(document.getElementById('root')).render(
                         <Header />
                         <div className="main-content">
                               <SidePage />
+
                               <div className="page-content">
                                     <Routes>
                                           <Route path="/user/:userId" element={<UserDataPage />} />

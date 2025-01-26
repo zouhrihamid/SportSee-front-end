@@ -1,4 +1,48 @@
-.score-chart-containerstyle {
+.score-chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 258px;
+      aspect-ratio: 1 / 1;
+      margin-top: 0px !important;
+      background-color: rgba(251, 251, 251, 1);
+      border-radius: 10px;
+}
+
+.chart-overlay {
+      position: absolute;
       display: flex;
-      justify-content: center;
+      flex-direction: row;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+}
+
+.chart-title {
+      position: absolute;
+      top: 70px;
+      left: -10%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #282d30;
+      font-size: 16px;
+      font-weight: bold;
+}
+
+.chart-score {
+      display: flex;
+      flex-direction: column;
+      margin-top: 150px;
+}
+
+.chart-percentage {
+      font-size: 20px;
+      font-weight: bold;
+      color: #282d30;
+}
+
+.chart-subtitle {
+      font-family: 'Roboto';
+      font-size: 16px;
+      color: #74798c;
 }

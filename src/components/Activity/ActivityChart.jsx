@@ -57,7 +57,7 @@ const ActivityChart = ({ sessions }) => {
       return (
             <div className="container-chart">
                   <h3>Activité quotidienne</h3>
-                  <ResponsiveContainer width={835} height={320}>
+                  <ResponsiveContainer width="100%" height={320}>
                         <BarChart
                               data={data}
                               margin={{
@@ -79,8 +79,8 @@ const ActivityChart = ({ sessions }) => {
                               <Legend
                                     wrapperStyle={{
                                           position: 'absolute',
-                                          top: '-35px',
-                                          left: '250px',
+                                          top: '-10%',
+                                          left: '30%',
                                           fontFamily: 'Roboto, sans-serif',
                                           fontSize: '14px',
                                     }}
