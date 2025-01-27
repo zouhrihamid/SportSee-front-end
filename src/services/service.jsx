@@ -125,14 +125,12 @@ export function useGetAllData(userId, isMocked) {
                                     data: { user, activity, average, performance },
                               });
                         } else {
-                              const [userRes, activityRes, averageRes, performanceRes] = await Promise.all([
-                                    fetch(`${baseUrl}${userId}`),
-                                    fetch(`${baseUrl}${userId}/activity`),
-                                    fetch(`${baseUrl}${userId}/average-sessions`),
-                                    fetch(`${baseUrl}${userId}/performance`),
+                              const [user, activity, average, performance] = await Promise.all([
+                                    fetch(`${baseUrl}${userId}`).then((res) => res.json()),
+                                    fetch(`${baseUrl}${userId}/activity`).then((res) => res.json()),
+                                    fetch(`${baseUrl}${userId}/average-sessions`).then((res) => res.json()),
+                                    fetch(`${baseUrl}${userId}/performance`).then((res) => res.json()),
                               ]);
-
-                              const [user, activity, average, performance] = await Promise.all([userRes.json(), activityRes.json(), averageRes.json(), performanceRes.json()]);
 
                               setState({
                                     data: {

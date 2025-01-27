@@ -27,6 +27,7 @@ const PerformanceChart = ({ performance }) => {
             value: item.value,
       }));
       const reverseData = transformedData.reverse();
+
       return (
             <div className="performance-chart-container">
                   <ResponsiveContainer width="100%" height="100%">
@@ -36,15 +37,16 @@ const PerformanceChart = ({ performance }) => {
                                     top: 0,
                                     right: 35,
                                     left: 30,
-                                    bottom: 30,
+                                    bottom: 0,
                               }}
-                              style={{ backgroundColor: '#1e1e1e', borderRadius: '8px', padding: '0px' }}
+                              style={{ backgroundColor: 'rgba(40,45,48,1)', borderRadius: '8px', padding: '0px' }}
+                              innerRadius="10%"
                               outerRadius="90%"
                         >
-                              <PolarGrid stroke="white" gridType="polygon" radialLines={false} polarRadius={[0, 13, 27, 49, 72, 90]} />
-                              <PolarAngleAxis dataKey="category" tick={{ fill: 'white', fontSize: 12 }} tickSize={12} />
+                              <PolarGrid stroke="rgba(255,255,255,1)" gridType="polygon" radialLines={false} />
+                              <PolarAngleAxis dataKey="category" tick={{ fill: 'rgba(255,255,255,1)', fontSize: 'clamp(6px, 1vw, 12px)' }} dy={5} />
                               <PolarRadiusAxis tick={false} axisLine={false} />
-                              <Radar dataKey="value" stroke="white" fill="#FF0101" fillOpacity={0.6} />
+                              <Radar dataKey="value" stroke="white" fill="rgba(255,1,1,0.7)" fillOpacity={0.6} />
                         </RadarChart>
                   </ResponsiveContainer>
             </div>

@@ -15,7 +15,7 @@
 }
 .title-average p {
       color: rgba(255, 255, 255, 0.5);
-      font-size: 15px;
+      font-size: clamp(12px, 1vw, 15px);
       font-weight: 500;
       font-family: 'Roboto';
       text-align: center;

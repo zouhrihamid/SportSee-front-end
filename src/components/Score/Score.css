@@ -20,8 +20,8 @@
 
 .chart-title {
       position: absolute;
-      top: 70px;
-      left: -10%;
+      top: 35%;
+      left: -20%;
       transform: translate(-50%, -50%);
       text-align: center;
       color: #282d30;
@@ -36,13 +36,13 @@
 }
 
 .chart-percentage {
-      font-size: 20px;
+      font-size: clamp(18px, 1vw, 20px);
       font-weight: bold;
       color: #282d30;
 }
 
 .chart-subtitle {
       font-family: 'Roboto';
-      font-size: 16px;
+      font-size: clamp(14px, 1vw, 16px);
       color: #74798c;
 }
