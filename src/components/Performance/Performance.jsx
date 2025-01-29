@@ -3,15 +3,12 @@ import { Radar, RadarChart, ResponsiveContainer, PolarGrid, PolarAngleAxis, Pola
 import './Performance.css';
 
 /**
- * PerformanceChart Component
- * @param {Object} props - The component props
- * @param {Object} props.performance - The performance data
- * @returns {JSX.Element} RadarChart
+ * Prepare Data for RadarChart
+ * @param {Object} performance - The performance data
+ * @returns {Array} Transformed and reversed performance data
  */
-const PerformanceChart = ({ performance }) => {
-      console.log('Performance Data received:', performance);
-
-      if (!performance || typeof performance !== 'object' || !Array.isArray(performance.data) || performance.data.length === 0) {
+const prepareData = (performance) => {
+      if (performance.data.length === 0) {
             return <div>No performance data available.</div>;
       }
       const categoryTranslation = {
@@ -22,17 +19,29 @@ const PerformanceChart = ({ performance }) => {
             speed: 'Vitesse',
             intensity: 'Intensité',
       };
-      const transformedData = performance.data.map((item) => ({
-            category: categoryTranslation[performance.kind[item.kind]] || 'Unknown',
-            value: item.value,
-      }));
-      const reverseData = transformedData.reverse();
+      return performance.data
+            .map((item) => ({
+                  category: categoryTranslation[performance.kind[item.kind]] || 'Unknown',
+                  value: item.value,
+            }))
+            .reverse();
+};
+
+/**
+ * PerformanceChart Component
+ * @param {Object} props - The component props
+ * @param {Object} props.performance - The performance data
+ * @returns {JSX.Element} RadarChart
+ */
+
+const PerformanceChart = ({ performance }) => {
+      console.log('Performance Data received:', performance);
 
       return (
             <div className="performance-chart-container">
                   <ResponsiveContainer width="100%" height="100%">
                         <RadarChart
-                              data={reverseData}
+                              data={prepareData(performance)}
                               margin={{
                                     top: 0,
                                     right: 35,

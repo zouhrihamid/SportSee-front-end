@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 
+/**
+ *
+ * @param {*} userId
+ * @param {*} isMocked
+ * @returns @returns {Object}
+ */
 const baseUrl = 'http://localhost:3000/user/';
 
 export function useGetAllData(userId, isMocked) {

@@ -4,7 +4,7 @@ import './score.css';
 /**
  *
  * @param {*} param0
- * @returns
+ * @returns {JSX.Element} RadialBarChart
  */
 const SimpleRadialBarChart = ({ score }) => {
       const chartData = [

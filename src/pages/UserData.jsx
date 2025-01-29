@@ -10,6 +10,13 @@ import glucidesIcon from '../assets/carbs-icon.jpg';
 import lipideIcon from '../assets/fat-icon.jpg';
 import { useGetAllData } from '../services/service';
 
+/**
+ *
+ *  @param {Object} props
+ * @param {number}
+ *  @returns {JSX.Element}
+ */
+
 const UserDataComponent = ({ userId }) => {
       const isMocked = true;
       const { data } = useGetAllData(userId, isMocked);

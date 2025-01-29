@@ -8,17 +8,16 @@
 }
 
 .title-average {
-      transform: rotate(90deg);
       position: absolute;
-      left: -35px;
-      top: -40px;
-}
-.title-average p {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: clamp(12px, 1vw, 15px);
+      left: 10%;
+      top: 0px;
+
+      font-size: clamp(12px, 2vw, 15px);
       font-weight: 500;
       font-family: 'Roboto';
       text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      padding-right: 20%;
 }
 
 .recharts-tooltip-wrapper {

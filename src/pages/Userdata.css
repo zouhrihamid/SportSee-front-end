@@ -7,68 +7,73 @@
 .title {
       display: flex;
       flex-direction: column;
-      padding: 3rem 0rem 1rem 7em;
+      padding: 5% 10% 5% 8%;
       font-family: 'Roboto';
 }
 .Name {
       display: flex;
       font-weight: 500;
-      font-size: 48px;
+      font-size: clamp(20px, 3vw, 48px);
       gap: 10px;
 }
 .red {
       color: rgba(230, 0, 0, 1);
 }
+
 .subtitle {
       padding-top: 1rem;
-      font-size: 18px;
+      font-size: clamp(10px, 2vw, 18px);
       font-weight: 400;
 }
 
 .nutritional {
       display: flex;
       flex-direction: row;
-      align-items: center;
+
+      justify-items: center;
+      justify-content: space-between;
       width: 80%;
       background-color: rgba(251, 251, 251, 1);
       border-radius: 10px;
-      padding: 10% 0% 7% 10%;
+      padding: 10% 0% 0% 10%;
       text-align: center;
-      margin-right: 60%;
+      margin-right: 0%;
       margin-bottom: 20%;
-      position: relative;
+      box-sizing: border-box;
 }
 
-.nutritional img {
-      margin-bottom: 10px;
+.nutritional-icon {
+      padding: 0%;
+      margin: 0%;
       width: 28%;
       height: 28%;
 }
 
 .nutritional-info {
       display: flex;
-      position: absolute;
-      top: 27%;
-      right: 10%;
-      justify-content: center;
       flex-direction: column;
+      padding: 5% 25% 25% 0%;
+      margin: 0%;
 }
 
 .nutritional-info span {
       font-family: 'Roboto';
-      font-size: 20px;
+      font-size: clamp(8px, 2vw, 20px);
       font-weight: 700;
-      margin-bottom: -40px;
+      line-height: 1;
+      white-space: nowrap;
+      padding: 0%;
+      margin: 0%;
 }
 
 .nutritional-info p {
       font-family: 'Roboto';
-      font-size: 14px;
+      font-size: clamp(10px, 2vw, 14px);
       font-weight: 500;
       font-weight: normal;
       color: rgba(116, 121, 140, 1);
-      margin-top: 0;
-      rotate: 90deg;
+      padding: 0%;
+      margin: 0%;
 }
 
 .chart-and-nutrition {
