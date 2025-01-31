@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import SidePage from './components/SidePage/SidePage';
-import UserDataPage from './pages/UserDataPage';
+import UserDataPage from './pages/DataProfil';
 
 import './main.css';
 

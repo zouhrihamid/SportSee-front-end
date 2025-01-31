@@ -86,9 +86,10 @@ const ActivityChart = ({ sessions }) => {
                               barGap={10}
                         >
                               <CartesianGrid strokeDasharray="3,3" vertical={false} horizontal={true} />
-                              <XAxis dataKey="day" tickFormatter={(day) => day.slice(-1)} axisLine={false} tickLine={false} padding={{ left: -40, right: -40 }} />
+
+                              <XAxis dataKey="day" tickFormatter={(day) => day.slice(-1)} axisLine={true} tickLine={false} padding={{ left: -43, right: -43 }} />
                               <YAxis yAxisId="left" orientation="left" axisLine={false} tickLine={false} hide={true} tickCount={3} domain={[0, 0.7]} />
-                              <YAxis yAxisId="right" orientation="right" axisLine={false} tickLine={false} domain={[50, 90]} tickMargin={10} dx={30} tickCount={3} />
+                              <YAxis yAxisId="right" orientation="right" axisLine={false} tickLine={false} domain={[50, 90]} tickMargin={10} dx={25} tickCount={3} />
                               <Tooltip content={<CustomTooltip />} labelFormatter={() => ''} />
                               <Legend
                                     wrapperStyle={{

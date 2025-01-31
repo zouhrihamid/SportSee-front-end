@@ -9,8 +9,8 @@ import './Header.css';
  */
 function Header() {
       return (
-            <div className="header">
-                  <img src={Logo} alt="logo sport" />
+            <section className="header">
+                  <img className="logo" src={Logo} alt="logo sport" />
                   <nav className="navigation">
                         <Link to="#" className="nav-link">
                               Accueil
@@ -25,7 +25,7 @@ function Header() {
                               Communauté
                         </Link>
                   </nav>
-            </div>
+            </section>
       );
 }
 export default Header;

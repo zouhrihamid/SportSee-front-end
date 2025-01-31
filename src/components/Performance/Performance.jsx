@@ -35,8 +35,6 @@ const prepareData = (performance) => {
  */
 
 const PerformanceChart = ({ performance }) => {
-      console.log('Performance Data received:', performance);
-
       return (
             <div className="performance-chart-container">
                   <ResponsiveContainer width="100%" height="100%">
