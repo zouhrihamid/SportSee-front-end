@@ -20,7 +20,7 @@ const convertCaloriesToKcal = (sessions) => {
  * @returns {JSX.Element | null} Custom Tooltip JSX
  */
 const CustomTooltip = ({ active, payload, coordinate }) => {
-      if (active && payload && payload.length) {
+      if (active && payload.length) {
             const calorieData = payload.find((item) => item.name === 'Calories brûlées (kCal)');
             const kilogramData = payload.find((item) => item.name === 'Poids (kg)');
 

@@ -30,6 +30,7 @@ const UserDataPage = () => {
 
 const DataProfil = ({ userId }) => {
       const isMocked = true;
+
       const { data } = useGetAllData(userId, isMocked);
 
       if (!data) {

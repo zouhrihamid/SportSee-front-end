@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
+import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import './AverageChart.css';
 
 /**
@@ -9,7 +9,11 @@ import './AverageChart.css';
  */
 const CustomCursor = ({ points }) => {
       const { x } = points[0];
-      return <Rectangle fill="rgba(0, 0, 0, 0.5)" stroke="transparent" x={x + 1} y={0} width={258} height={263} />;
+      return (
+            <svg width="258px">
+                  <rect fill="rgba(0, 0, 0, 0.1)" stroke="transparent" x={x + 1} y={0} width="100%" height="100%" rx={10} ry={10} />
+            </svg>
+      );
 };
 
 CustomCursor.propTypes = {
