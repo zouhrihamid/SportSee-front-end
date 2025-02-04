@@ -23,7 +23,7 @@ function SidePage() {
                               <img src={IconMusculation} alt="Icon musculation" />
                         </Link>
                   </nav>
-                  <p className="rotated-text">Copiryght, SportSee 2020</p>
+                  <div className="rotated-text">Copiryght, SportSee 2020</div>
             </section>
       );
 }

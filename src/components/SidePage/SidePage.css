@@ -1,34 +1,41 @@
 .SidePage {
       display: flex;
       flex-direction: column;
-      width: 117px;
-      height: clamp(780, 1vw, auto);
+      align-items: center;
+      width: 6rem;
+      height: auto;
       background-color: rgba(2, 2, 3, 1);
-      gap: 300px;
+      padding-bottom: 2%;
 }
 .navigationside img {
-      width: 64px;
-      height: 64px;
-      padding: 1em 1em 0.5rem 1em;
-      border-radius: 20px;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 20%;
 }
 
 .navigationside {
       display: flex;
-      justify-content: center;
-      justify-items: center;
       flex-direction: column;
-      padding-top: 200px;
-      margin-left: 10px;
+      justify-content: space-around;
+      padding-top: 8rem;
+      margin-bottom: auto;
+      gap: 1rem;
 }
-.SidePage .rotated-text {
-      display: inline-block;
-      color: rgba(255, 255, 255, 1);
-      transform: rotate(-90deg);
+
+.rotated-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
       white-space: nowrap;
-      padding: 50px;
+      color: rgba(255, 255, 255, 1);
       font-size: 12px;
+      margin-top: auto;
 }
 body {
       font-family: 'Roboto', sans-serif;
+      height: 100%;
+      margin: 0;
 }

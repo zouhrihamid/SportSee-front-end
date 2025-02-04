@@ -1,6 +1,6 @@
 .container-chart {
       position: relative;
-      height: 320px;
+      height: clamp(18rem, 5vh, 20rem);
       width: 90%;
       padding-top: 60px;
       margin-left: 10%;
